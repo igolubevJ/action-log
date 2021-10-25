@@ -1,0 +1,34 @@
+###
+GET http://localhost:3050/api/tasks 
+
+
+###
+GET http://localhost:3050/api/tasks/3
+
+###
+POST http://localhost:3050/api/tasks HTTP/1.1
+content-type: application/json
+
+{
+  "title": "HTTP client Task",
+  "content": "Some task content",
+  "missionId": 2,
+  "executorId": 1,
+  "deadline": "2021-10-25 08:39:19"
+}
+
+###
+PUT http://localhost:3050/api/tasks/3 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "HTTP client Update Task",
+  "content": "content updated",
+  "missionId": 2,
+  "executorId": 1,
+  "deadline": "2021-10-28 08:39:19"
+
+}
+
+###
+DELETE http://localhost:3050/api/tasks/4
