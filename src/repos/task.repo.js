@@ -33,8 +33,7 @@ class TaskRepo extends Repo {
         'INSERT INTO tasks (title, content, mission_id, executor_id, creator_id, deadline) ' 
         + 'VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;',
         [title, content, missionId, executorId, creatorId, deadline]
-      );
-
+      )
       return this._successResult(rows[0]);
     } catch (err) {
       return this._errorResult(err.message);
@@ -48,6 +47,11 @@ class TaskRepo extends Repo {
         + 'WHERE id = $1 RETURNING *;',
         [id, title, content, executorId, deadline]
       );
+
+      if(!rows[0]) {
+        throw new Error(`Not found project by id: ${id}`);
+      }
+
       return this._successResult(rows[0]);
     } catch(err) {
       return this._errorResult(err.message);
