@@ -1,7 +1,8 @@
 const Pool = require('../pool');
-const { SUCCESS, ERROR } = require('../const');
 
-class ProjectRepo {
+const Repo = require('./repo');
+
+class ProjectRepo extends Repo {
   static async find() {
     try {
       const { rows } = await Pool.query('SELECT * FROM projects;');
@@ -64,14 +65,6 @@ class ProjectRepo {
     } catch (err) {
       return this._errorResult(err.message);
     }
-  }
-
-  static _successResult(payload) {
-    return { status: SUCCESS, payload };
-  }
-
-  static _errorResult(message) {
-    return { status: ERROR, message };
   }
 }
 
