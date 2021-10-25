@@ -1,0 +1,20 @@
+{
+  "name": "action-log",
+  "version": "1.0.0",
+  "description": "Action log servers",
+  "main": "index.js",
+  "scripts": {
+    "db:migrate": "node-pg-migrate",
+    "db:seed": "node migrations/seeds/seed.js",
+    "db:up": "DATABASE_URL=postgres://postgres:postgres_password@172.18.0.2:5432/action-log npm run db:migrate up",
+    "db:down": "DATABASE_URL=postgres://postgres:postgres_password@172.18.0.2:5432/action-log npm run db:migrate down"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-pg-migrate": "^6.0.0",
+    "pg": "^8.7.1"
+  }
+}
