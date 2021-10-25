@@ -1,0 +1,27 @@
+###
+GET http://localhost:3050/api/missions 
+
+
+###
+GET http://localhost:3050/api/missions/2
+
+###
+POST http://localhost:3050/api/missions HTTP/1.1
+content-type: application/json
+
+{
+  "title": "HTTP client Missions",
+  "projectId": 2
+}
+
+###
+PUT http://localhost:3050/api/missions/2 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "HTTP client Update Missions",
+  "projectId": 11
+}
+
+###
+DELETE http://localhost:3050/api/missions/4
