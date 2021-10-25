@@ -1,8 +1,14 @@
 const { SUCCESS, ERROR } = require('../const');
 
+const toCamelCase = require('../utils/to-camel-case');
+
 class Repo {
   static _successResult(payload) {
-    return { status: SUCCESS, payload };
+    if (Array.isArray(payload)) {
+      return { status: SUCCESS, payload: toCamelCase(payload) }
+    }
+
+    return { status: SUCCESS, payload: toCamelCase([payload])[0] };
   }
 
   static _errorResult(message) {
