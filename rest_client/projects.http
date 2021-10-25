@@ -1,0 +1,25 @@
+###
+GET http://localhost:3050/api/projects 
+
+
+###
+GET http://localhost:3050/api/projects/2
+
+###
+POST http://localhost:3050/api/projects HTTP/1.1
+content-type: application/json
+
+{
+  "title": "HTTP client Project"
+}
+
+###
+PUT http://localhost:3050/api/projects/5 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "HTTP client Update Project"
+}
+
+###
+DELETE http://localhost:3050/api/projects/3
