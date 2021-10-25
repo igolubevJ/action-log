@@ -2,13 +2,11 @@ const Pool = require('../pool');
 
 const Repo = require('./repo');
 
-const toCamelCase = require('../utils/to-camel-case');
-
 class ProjectRepo extends Repo {
   static async find() {
     try {
       const { rows } = await Pool.query('SELECT * FROM projects;');
-      return this._successResult(toCamelCase(rows));
+      return this._successResult(rows);
     } catch(err) {
       return this._errorResult(err.message);
     }
@@ -22,7 +20,7 @@ class ProjectRepo extends Repo {
         throw new Error(`Not found project by id: ${id}`);
       }
 
-      return this._successResult(toCamelCase(rows)[0]);
+      return this._successResult(rows[0]);
     } catch(err) {
       return this._errorResult(err.message);
     }
@@ -34,7 +32,7 @@ class ProjectRepo extends Repo {
         'INSERT INTO projects (title, creator_id) VALUES ($1, $2) RETURNING *;',
         [title, creatorId]
       );
-      return this._successResult(toCamelCase(rows)[0]);
+      return this._successResult(rows[0]);
     } catch (err) {
       return this._errorResult(err.message);
     }
@@ -50,7 +48,7 @@ class ProjectRepo extends Repo {
         throw new Error(`Not found project by id: ${id}`);
       }
 
-      return this._successResult(toCamelCase(rows)[0]);
+      return this._successResult(rows[0]);
     } catch(err) {
       return this._errorResult(err.message);
     }
