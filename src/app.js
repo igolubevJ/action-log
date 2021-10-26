@@ -5,6 +5,7 @@ const { currentUser } = require('./middleware/current-user.middleware');
 const projectRouter = require('./routes/project.router');
 const missionRouter = require('./routes/mission.router');
 const taskRouter = require('./routes/tast.router');
+const userRouter = require('./routes/user.router');
 
 const createServer = () => {
   const app = express();
@@ -16,6 +17,7 @@ const createServer = () => {
   app.use('/api', projectRouter);
   app.use('/api', missionRouter);
   app.use('/api', taskRouter);
+  app.use('/api', userRouter);
 
   app.get('/', (req, res) => {
     res.send('Server is running');
