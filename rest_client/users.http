@@ -1,0 +1,17 @@
+###
+GET http://localhost:3050/api/users
+
+###
+GET http://localhost:3050/api/users?banned=true
+
+
+###
+POST http://localhost:3050/api/users HTTP/1.1
+content-type: application/json
+
+{
+  "name": "test user"
+}
+
+###
+PUT http://localhost:3050/api/users/1/banned HTTP/1.1
