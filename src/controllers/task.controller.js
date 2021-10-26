@@ -1,3 +1,5 @@
+const { validationResult } = require('express-validator');
+
 const TaskRepo = require('../repos/task.repo');
 
 module.exports.find = async (req, res) => {
@@ -13,6 +15,15 @@ module.exports.findById = async (req, res) => {
 };
 
 module.exports.create = async (req, res) => {
+  const { errors } = validationResult(req);
+
+  if (errors.length > 0) {
+    return res.json({
+      status: 'validation-error',
+      errors: errors 
+    });
+  }
+
   const { title, content, missionId, executorId, deadline } = req.body;
   const result = await TaskRepo.create(
     title, 
@@ -27,6 +38,15 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.update = async (req, res) => {
+  const { errors } = validationResult(req);
+
+  if (errors.length > 0) {
+    return res.json({
+      status: 'validation-error',
+      errors: errors 
+    });
+  }
+  
   const { id } = req.params;
   const { title, content, executorId, deadline } = req.body;
 
