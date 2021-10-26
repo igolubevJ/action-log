@@ -1,3 +1,5 @@
+const { validationResult } = require('express-validator');
+
 const UserRepo = require('../repos/user.repo');
 
 module.exports.find = async (req, res) => {
@@ -13,6 +15,15 @@ module.exports.find = async (req, res) => {
 };
 
 module.exports.create = async (req, res) => {
+  const { errors } = validationResult(req);
+
+  if (errors.length > 0) {
+    return res.json({
+      status: 'validation-error',
+      errors: errors 
+    });
+  }
+
   const { name } = req.body;
 
   const result = await UserRepo.create(name);
