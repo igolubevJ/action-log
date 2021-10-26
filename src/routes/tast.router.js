@@ -2,6 +2,8 @@ const { Router } = require('express');
 
 const { check } = require('express-validator');
 
+const { authProtect } = require('../middleware/protect-route.middleware');
+
 const {
   find,
   findById,
@@ -12,12 +14,13 @@ const {
 
 const router = Router();
 
-router.get('/tasks', find);
+router.get('/tasks', authProtect, find);
 
-router.get('/tasks/:id', findById);
+router.get('/tasks/:id', authProtect, findById);
 
 router.post(
   '/tasks', 
+  authProtect,
   check('title')
     .isLength({ min: 3 })
     .withMessage('Min length title is 3 characters')
@@ -47,6 +50,7 @@ router.post(
 
 router.put(
   '/tasks/:id', 
+  authProtect,
   check('title')
     .isLength({ min: 3 })
     .withMessage('Min length title is 3 characters')
@@ -70,6 +74,6 @@ router.put(
   update
 );
 
-router.delete('/tasks/:id', destroy);
+router.delete('/tasks/:id', authProtect, destroy);
 
 module.exports = router;
