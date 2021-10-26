@@ -1,5 +1,6 @@
 ###
-GET http://localhost:3050/api/projects 
+GET http://localhost:3050/api/projects
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM1MjQyMTk0LCJleHAiOjE2NDMwMTgxOTR9.O4kaFoN3TaIFHzZiWrx8Oc4-U-PN2LtAz-l28DbC7VU
 
 
 ###

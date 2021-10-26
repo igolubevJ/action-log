@@ -1,0 +1,10 @@
+###
+POST http://localhost:3050/api/auth/signin
+content-type: application/json
+
+{
+  "id": 1,
+  "password": "1234567"
+}
+
+###
